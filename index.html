@@ -13,18 +13,22 @@
 </head>
 
 <body>
-    <header>
-        <h1>Weather Dashboard</h1>
+    <header class="jumbotron">
+        <h1 class="display-4 d-flex justify-content-center">Weather Dashboard</h1>
     </header>
 
-    <main>
-        <section container-fluid>
-            <div>
-
+    <main class="container-fluid">
+        <section class="row my-4">
+            <div class="col-12 col-sm-4 col-md-3 bg-primary">
+                <div class="form-group">
+                    <label for="searchCity">Search for a City:</label>
+                    <input type="text" class="form-control" id="searchCity" placeholder="Los Angeles">
+                    <button type="submit" class="btn btn-info my-2">Search</button>
+                </div>            
             </div>
 
-            <div>
-
+            <div class="col-12 col-sm-8 col-md-9 bg-info">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iste quam velit corrupti consequuntur nulla, nemo perferendis totam tempore, unde nesciunt debitis, sed quos omnis vel ab quisquam illo ullam.</p>
             </div>
         </section>
 
