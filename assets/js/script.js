@@ -4,7 +4,7 @@
 
 // todo add fetch call for weather api 
 function getAPI(){
-    var requestURL = "";
+    var requestURL = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f18de7fe10f46ccca13adc41b61d567d";
     // API KEY : f18de7fe10f46ccca13adc41b61d567d
 
     fetch(requestURL)
@@ -15,6 +15,8 @@ function getAPI(){
             console.log(data);
         })
 }
+
+getAPI();
 
 // when search city, add to local storage, get the calls for the apis 
 
