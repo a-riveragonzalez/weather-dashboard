@@ -1,0 +1,17 @@
+/* defining variables */
+:root{
+
+}
+
+/* universal selector */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* element selectors */
+
+/* class selectors */
+
+/* id selectors */
