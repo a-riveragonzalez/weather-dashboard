@@ -15,3 +15,15 @@ function getAPI(){
             console.log(data);
         })
 }
+
+// when search city, add to local storage, get the calls for the apis 
+
+// geodirect - https://openweathermap.org/api/geocoding-api
+// pass city, get longitude
+
+// one call api - https://openweathermap.org/api/one-cal
+// five days weather forcast 
+// creating card for five day, pushing info onto card 
+
+//better weather icons 
+//https://erikflowers.github.io/weather-icons/
