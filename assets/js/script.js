@@ -17,7 +17,7 @@ function getCity(event){
 
 function makeRecentCities(){
     var savedCities = localStorage.getItem("city");
-    var savedCity1 = $("<li>").text(savedCities).addClass("list-group-item")
+    var savedCity1 = $("<li>").text(savedCities).addClass("list-group-item py-1 my-2 d-flex justify-content-center")
     recentCitiesList.append(savedCity1);
 }
 

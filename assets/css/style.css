@@ -1,6 +1,11 @@
 /* defining variables */
 :root{
-    /* choose a color scheme */
+    --dark-grey: #393B44;
+    --grey-grey: #8D93AB;
+    --light-grey: #D6E0F0;
+    --off-white: #F1F3F8;
+    --purple: #7C83FD;
+    --blue: #88FFF7;
 }
 
 /* universal selector */
@@ -8,10 +13,35 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Mitr', sans-serif;
 }
 
 /* element selectors */
+body {
+    background-color: var(--dark-grey);
+}
 
 /* class selectors */
+.custom-jumbo {
+    background-color: var(--dark-grey);
+    background-image: url("bluebg.jpg");
+    background-position: center;
+    background-size: cover;
+    color: var(--dark-grey);
+    border-radius: 0;
+    margin-bottom: -16px;
+}
+
+.custom-search-div {
+    background-color: var(--blue);
+}
+
+.custom-weather-info {
+    background-color: var(--purple);
+}
+
+.btn {
+    background-color: var(--purple);
+}
 
 /* id selectors */
