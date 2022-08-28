@@ -5,6 +5,8 @@ var currentWeatherEl = $(".current-weather");
 var fiveDayForcastEl = $(".five-day-forcast");
 var recentCitiesList = $(".list-group");
 
+var today = moment().format("MMMM Do")
+
 
 // get city, add it to local storage
 // todo make local storage array
@@ -32,7 +34,6 @@ function getAPI(city){
             return response.json();
         })
         .then(function(data){
-            console.log(data);
             var lat = data[0].lat;
             var lon = data[0].lon;
 
@@ -49,11 +50,22 @@ function getAPI(city){
                 }
             }).then(function(data2) {
                 console.log(data2);
+                var cityName = data2.city.name;
+                var todayIcon = data2.list[0].weather[0].icon;
+                var todayTemp = "Temp: " + data2.list[0].main.temp + "°F";
+                var todayWind = "Wind: " + data2.list[0].wind.speed + " MPH";
+                var todayHumidity = "Humidity: " + data2.list[0].main.humidity + "%";
+                var todayUVIndex;
 
                 // generate current weather card
                 // todo make H3 with name of city, date, and icon of current weather
-
+                var cityHeading = $("<h2>").text(cityName + " : " + today).addClass("text-dark border-bottom border-dark");
                 // todo make p's with temp, wind, humidity, and uv index
+                var temp = $("<p>").text(todayTemp).addClass("text-dark mb-0");
+                var wind = $("<p>").text(todayWind).addClass("text-dark mb-0");
+                var humidity = $("<p>").text(todayHumidity).addClass("text-dark mb-0");
+
+                currentWeatherEl.append(cityHeading , temp , wind , humidity);
 
                 // generate five day forcast cards
                 // todo find index #s for next five days
