@@ -10,10 +10,9 @@ var recentCitiesList = $(".list-group");
 // todo make local storage array
 function getCity(event){
     var city = event.currentTarget.previousElementSibling.value;
-    console.log(city);
     localStorage.setItem("city", city);
 
-    makeRecentCities();
+    getAPI(city);
 }
 
 function makeRecentCities(){
@@ -23,9 +22,10 @@ function makeRecentCities(){
 }
 
 // todo add fetch call for weather api 
-function getAPI(){
-    var requestURL = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f18de7fe10f46ccca13adc41b61d567d";
-    // API KEY : f18de7fe10f46ccca13adc41b61d567d
+function getAPI(city){
+    var city = city;
+    console.log(city);
+    var requestURL = "http://api.openweathermap.org/geo/1.0/direct?appid=f18de7fe10f46ccca13adc41b61d567d&q=" + city;
 
     fetch(requestURL)
         .then(function (response){
@@ -33,7 +33,24 @@ function getAPI(){
         })
         .then(function(data){
             console.log(data);
-        })
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+
+            var url = "https://api.openweathermap.org/data/2.5/forecast?appid=f18de7fe10f46ccca13adc41b61d567d&lat=" + lat + "&lon=" + lon;
+
+            fetch(url)
+            .then(function(response2){
+                if (response2.ok) {
+                    return response2.json();
+                }
+                else{
+                    // todo make 404 error page populate
+                    console.log("there's an error!")
+                }
+            }).then(function(data2) {
+                console.log(data2);
+            })
+        });
 }
 
 searchBtnEl.on("click", getCity);
