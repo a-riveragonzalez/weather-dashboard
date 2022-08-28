@@ -1,12 +1,12 @@
 // defining variables
 var searchBtnEl = $("#searchBtn");
 var searchCityEl = $("#searchCity");
+var currentWeatherEl = $(".current-weather");
+var fiveDayForcastEl = $(".five-day-forcast");
 var recentCitiesList = $(".list-group");
 
 
-// functions 
 // get city, add it to local storage
-// todo get its long and lat
 // todo make local storage array
 function getCity(event){
     var city = event.currentTarget.previousElementSibling.value;
@@ -49,21 +49,23 @@ function getAPI(city){
                 }
             }).then(function(data2) {
                 console.log(data2);
+
+                // generate current weather card
+                // todo make H3 with name of city, date, and icon of current weather
+
+                // todo make p's with temp, wind, humidity, and uv index
+
+                // generate five day forcast cards
+                // todo find index #s for next five days
+                // todo make card with date, icon, temp, wind, and humidity
+
+
             })
         });
 }
 
 searchBtnEl.on("click", getCity);
 makeRecentCities();
-
-
-// todo when search city, add to local storage, get the calls for the apis 
-
-// todo pass city, get longitude
-// geodirect - https://openweathermap.org/api/geocoding-api
-
-// todo five days weather forcast creating card for five day, pushing info onto card
-// one call api - https://openweathermap.org/api/one-cal
 
 
 // todo better weather icons 
