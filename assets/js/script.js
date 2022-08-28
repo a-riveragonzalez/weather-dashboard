@@ -21,7 +21,7 @@ function makeRecentCities(){
     recentCitiesList.append(savedCity1);
 }
 
-// todo add fetch call for weather api 
+// todo fetch current weather, weather forcast 5 days 
 function getAPI(city){
     var city = city;
     console.log(city);
@@ -36,7 +36,7 @@ function getAPI(city){
             var lat = data[0].lat;
             var lon = data[0].lon;
 
-            var url = "https://api.openweathermap.org/data/2.5/forecast?appid=f18de7fe10f46ccca13adc41b61d567d&lat=" + lat + "&lon=" + lon;
+            var url = "https://api.openweathermap.org/data/2.5/forecast?appid=f18de7fe10f46ccca13adc41b61d567d&units=imperial&lat=" + lat + "&lon=" + lon;
 
             fetch(url)
             .then(function(response2){
