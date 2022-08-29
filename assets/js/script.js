@@ -3,6 +3,7 @@ var searchBtnEl = $("#searchBtn");
 var searchCityEl = $("#searchCity");
 var currentWeatherEl = $(".current-weather");
 var fiveDayForcastEl = $(".five-day-forcast");
+var cardBodyEl = $(".card-body");
 var recentCitiesList = $(".list-group");
 
 var today = moment().format("MMMM Do")
@@ -79,8 +80,13 @@ function getAPI(city){
                     var forcastWind = "Wind: " + data2.list[indexNumber].wind.speed + " MPH";
                     var forcastHumidity = "Humidity: " + data2.list[indexNumber].main.humidity + "%";
                     
-                    
+                    var dateCard = $("<h5>").text(forcastDate).addClass("card-title");
+                    var iconCard = $("<p>").text(forcastIcon).addClass("card-text");
+                    var tempCard = $("<p>").text(forcastTemp).addClass("card-text");
+                    var windCard = $("<p>").text(forcastWind).addClass("card-text");
+                    var humidityCard = $("<p>").text(forcastHumidity).addClass("card-text");
 
+                    cardBodyEl.append(dateCard , iconCard , tempCard , windCard , humidityCard);
                 })
 
 
