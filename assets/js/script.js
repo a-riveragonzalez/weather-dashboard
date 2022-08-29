@@ -68,8 +68,20 @@ function getAPI(city){
                 currentWeatherEl.append(cityHeading , temp , wind , humidity);
 
                 // generate five day forcast cards
-                // todo find index #s for next five days
                 // todo make card with date, icon, temp, wind, and humidity
+                // these are the index numbers for next five days
+                var indexNumbers = ["9", "17", "25", "33", "39"]; 
+
+                indexNumbers.forEach(function(indexNumber){
+                    var forcastDate = moment(data2.list[indexNumber].dt,"X").format("M/D/YYYY");
+                    var forcastIcon = data2.list[indexNumber].weather[0].icon;
+                    var forcastTemp = "Temp: " + data2.list[indexNumber].main.temp + "°F";
+                    var forcastWind = "Wind: " + data2.list[indexNumber].wind.speed + " MPH";
+                    var forcastHumidity = "Humidity: " + data2.list[indexNumber].main.humidity + "%";
+                    
+                    
+
+                })
 
 
             })
