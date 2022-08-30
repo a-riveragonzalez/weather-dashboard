@@ -51,22 +51,23 @@ function getAPI(city){
             }).then(function(data2) {
                 console.log(data2);
 
-                // var cityName = data2.city.name;
+                var cityName = city.toUpperCase();
                 var todayIcon = data2.current.weather[0].icon;
                 var todayTemp = "Temp: " + data2.current.temp + "°F";
                 var todayWind = "Wind: " + data2.current.wind_speed + " MPH";
                 var todayHumidity = "Humidity: " + data2.current.humidity + "%";
-                var todayUVIndex = data2.current.uvi;
+                var todayUVIndex = "UV Index: " + data2.current.uvi;
 
                 // generate current weather card
                 // todo make H3 with name of city, date, and icon of current weather
-                // var cityHeading = $("<h2>").text(cityName + " : " + today).addClass("text-dark border-bottom border-dark");
+                var cityHeading = $("<h2>").text(cityName + " : " + today).addClass("text-dark border-bottom border-dark");
                 // todo make p's with temp, wind, humidity, and uv index
                 var temp = $("<p>").text(todayTemp).addClass("text-dark mb-0");
                 var wind = $("<p>").text(todayWind).addClass("text-dark mb-0");
                 var humidity = $("<p>").text(todayHumidity).addClass("text-dark mb-0");
+                var uvIndex = $("<p>").text(todayUVIndex).addClass("text-dark mb-0");
 
-                currentWeatherEl.append(temp , wind , humidity); //cityHeading
+                currentWeatherEl.append(cityHeading, temp , wind , humidity, uvIndex); 
 
                 // generate five day forcast cards
                 // todo make card with date, icon, temp, wind, and humidity
@@ -76,7 +77,6 @@ function getAPI(city){
                 indexNumbers.forEach(function(indexNumber){
                     var forcastDate = moment(data2.daily[indexNumber].dt,"X").format("M/D/YYYY");
                     var forcastIcon = data2.daily[indexNumber].weather[0].icon;
-                    console.log(forcastDate);
                     var forcastTemp = "Temp: " + data2.daily[indexNumber].temp.day + "°F";
                     var forcastWind = "Wind: " + data2.daily[indexNumber].wind_speed + " MPH";
                     var forcastHumidity = "Humidity: " + data2.daily[indexNumber].humidity + "%";
