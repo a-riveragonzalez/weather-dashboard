@@ -42,6 +42,7 @@ function getCity(event){
     // set to local storage (stringify it)
     localStorage.setItem("city", JSON.stringify(citiesArray));
 
+    // makeRecentCities();
     getAPI(city);
 }
 
@@ -61,6 +62,9 @@ function makeRecentCities(){
     }
 }
 
+// todo make function for : if i click on recent cities, then getAPI(city) 
+// todo add event listener to recentCitiesList
+
 // todo fetch current weather, weather forcast 5 days 
 function getAPI(city){
     var city = city;
@@ -74,6 +78,7 @@ function getAPI(city){
         .then(function(data){
             var lat = data[0].lat;
             var lon = data[0].lon;
+            console.log(data);
 
             var url = "https://api.openweathermap.org/data/2.5/onecall?appid=9b35244b1b7b8578e6c231fd7654c186&units=imperial&lat=" + lat + "&lon=" + lon;
 
@@ -98,7 +103,7 @@ function getAPI(city){
 
                 // generate current weather card
                 // todo make H3 with name of city, date, and icon of current weather
-                var cityHeading = $("<h2>").text(cityName + " : " + today).addClass("text-dark border-bottom border-dark");
+                var cityHeading = $("<h2>").text(cityName + " : " + today + " " + todayIcon).addClass("text-dark border-bottom border-dark");
                 // todo make p's with temp, wind, humidity, and uv index
                 var temp = $("<p>").text(todayTemp).addClass("text-dark mb-0");
                 var wind = $("<p>").text(todayWind).addClass("text-dark mb-0");
@@ -142,5 +147,3 @@ searchBtnEl.on("click", getCity);
 makeRecentCities();
 
 
-// todo better weather icons 
-//https://erikflowers.github.io/weather-icons/
