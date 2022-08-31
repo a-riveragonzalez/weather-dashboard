@@ -13,19 +13,31 @@ var citiesArray = [];
 // todo make local storage array
 function getCity(event){
     var city = event.currentTarget.previousElementSibling.value;
+
     // get cities local storage
-    // if city (the key value) does not exist --local storage empty-- -> 
-    // parse from the local storage 
+    // if city (the key value) does not exist, make an empty slot in local storage
     if (!localStorage.getItem("city")){
         localStorage.setItem("city", "[]");
-        console.log("hm its empty");
     } else {
+        // parse from the local storage 
         citiesArray = JSON.parse(localStorage.getItem("city"))
-        console.log("hm its not empty")
     }
 
-    // push new city to the array 
-    citiesArray.push(city);
+    // if local storage > 10 
+        //? delete first item in array 
+    if (citiesArray.length >= 5){
+        citiesArray.shift();
+    }
+
+    // if city not already exists in local storage -add it
+        // elseoverride it 
+
+    if (!citiesArray.includes(city)){
+        citiesArray.push(city);
+    } else {
+        console.log("its a repeat");
+    }
+
     // set to local storage (stringify it)
     localStorage.setItem("city", JSON.stringify(citiesArray));
 
