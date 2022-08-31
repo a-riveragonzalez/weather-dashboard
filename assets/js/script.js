@@ -1,19 +1,23 @@
-// defining variables
+// Reference variables
 var searchBtnEl = $("#searchBtn");
 var searchCityEl = $("#searchCity");
 var currentWeatherEl = $(".current-weather");
 var fiveDayForcastEl = $(".five-day-forcast");
 var recentCitiesList = $(".list-group");
 
+// Global variables
 var today = moment().format("MMMM Do")
 var citiesArray = [];
 
 
-// get city, add it to local storage
-// todo make local storage array
+// get city, add it to local storage array
 function getCity(event){
     var city = event.currentTarget.previousElementSibling.value;
 
+    // error control
+    if (city === ""){
+        return
+    }
     // get cities local storage
     // if city (the key value) does not exist, make an empty slot in local storage
     if (!localStorage.getItem("city")){
@@ -23,15 +27,12 @@ function getCity(event){
         citiesArray = JSON.parse(localStorage.getItem("city"))
     }
 
-    // if local storage > 10 
-        //? delete first item in array 
+    // if local storage >, delete first item in array 
     if (citiesArray.length >= 5){
         citiesArray.shift();
     }
 
-    // if city not already exists in local storage -add it
-        // elseoverride it 
-
+    // if city doesn't already exist in local storage, add it
     if (!citiesArray.includes(city)){
         citiesArray.push(city);
     } else {
@@ -47,15 +48,17 @@ function getCity(event){
 // displays local storage 
 function makeRecentCities(){
     var savedCities = JSON.parse(localStorage.getItem("city"));
-    console.log(savedCities);
 
-    savedCities.forEach(function(cityItem){
-        var savedCityItems = $("<li>").text(cityItem).addClass("list-group-item py-1 my-2 d-flex justify-content-center")
-    
-        recentCitiesList.append(savedCityItems);
-    })
-
-    
+    // error control
+    if (savedCities===null){
+        console.log("nothing in local storage")
+    } else {
+        savedCities.forEach(function(cityItem){
+            var savedCityItems = $("<li>").text(cityItem).addClass("list-group-item py-1 my-2 d-flex justify-content-center")
+        
+            recentCitiesList.append(savedCityItems);
+        })
+    }
 }
 
 // todo fetch current weather, weather forcast 5 days 
