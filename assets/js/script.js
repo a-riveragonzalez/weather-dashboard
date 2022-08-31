@@ -6,21 +6,44 @@ var fiveDayForcastEl = $(".five-day-forcast");
 var recentCitiesList = $(".list-group");
 
 var today = moment().format("MMMM Do")
+var citiesArray = [];
 
 
 // get city, add it to local storage
 // todo make local storage array
 function getCity(event){
     var city = event.currentTarget.previousElementSibling.value;
-    localStorage.setItem("city", city);
+    // get cities local storage
+    // if city (the key value) does not exist --local storage empty-- -> 
+    // parse from the local storage 
+    if (!localStorage.getItem("city")){
+        localStorage.setItem("city", "[]");
+        console.log("hm its empty");
+    } else {
+        citiesArray = JSON.parse(localStorage.getItem("city"))
+        console.log("hm its not empty")
+    }
+
+    // push new city to the array 
+    citiesArray.push(city);
+    // set to local storage (stringify it)
+    localStorage.setItem("city", JSON.stringify(citiesArray));
 
     getAPI(city);
 }
 
+// displays local storage 
 function makeRecentCities(){
-    var savedCities = localStorage.getItem("city");
-    var savedCity1 = $("<li>").text(savedCities).addClass("list-group-item py-1 my-2 d-flex justify-content-center")
-    recentCitiesList.append(savedCity1);
+    var savedCities = JSON.parse(localStorage.getItem("city"));
+    console.log(savedCities);
+
+    savedCities.forEach(function(cityItem){
+        var savedCityItems = $("<li>").text(cityItem).addClass("list-group-item py-1 my-2 d-flex justify-content-center")
+    
+        recentCitiesList.append(savedCityItems);
+    })
+
+    
 }
 
 // todo fetch current weather, weather forcast 5 days 
