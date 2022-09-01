@@ -55,7 +55,7 @@ function makeRecentCities(){
         console.log("nothing in local storage")
     } else {
         savedCities.forEach(function(cityItem){
-            var savedCityItems = $("<li>").text(cityItem).addClass("list-group-item py-1 my-2 d-flex justify-content-center")
+            var savedCityItems = $("<li>").text(cityItem).addClass("list-group-item py-1 my-2 d-flex justify-content-center recent-cities-items")
         
             recentCitiesList.append(savedCityItems);
         })
@@ -145,4 +145,14 @@ function getAPI(city){
 searchBtnEl.on("click", getCity);
 makeRecentCities();
 
+// Make Recent Cities Clickable 
+var recentCitiesItemsArray = $("li");
 
+recentCitiesItemsArray.each(function(i, city){
+    $(city).on("click", sendRecentCity)
+  })
+
+function sendRecentCity(city){
+    var city = city.target.textContent;
+    getAPI(city);
+}
