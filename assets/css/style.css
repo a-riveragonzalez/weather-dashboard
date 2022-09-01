@@ -44,4 +44,17 @@ body {
     background-color: var(--purple);
 }
 
+/* UV levels  */
+.uvFavorable{
+    background-color: #00FFAB;
+}
+
+.uvModerate{
+    background-color: #FAF4B7;
+}
+
+.uvSevere{
+    background-color: #E94560;
+}
+
 /* id selectors */
