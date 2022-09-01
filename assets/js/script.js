@@ -62,11 +62,8 @@ function makeRecentCities(){
     }
 }
 
-// todo make function for : if i click on recent cities, then getAPI(city) 
-// todo add event listener to recentCitiesList
 
-
-// todo fetch current weather, weather forcast 5 days 
+// fetch current weather, weather forcast 5 days 
 function getAPI(city){
     var city = city;
     console.log(city);
@@ -150,7 +147,7 @@ var recentCitiesItemsArray = $("li");
 
 recentCitiesItemsArray.each(function(i, city){
     $(city).on("click", sendRecentCity)
-  })
+})
 
 function sendRecentCity(city){
     var city = city.target.textContent;
