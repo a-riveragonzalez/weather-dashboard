@@ -107,10 +107,11 @@ function getAPI(city){
                 var cityHeading = $("<h2>").text(cityName + " : " + today).addClass("text-dark border-bottom border-dark");
                 var iconPic = $("<img>").attr("src", todayIcon);
                 // todo make uv index change class depending on its value
+                // todo how to make a span for todayUVIndex
                 var temp = $("<p>").text(todayTemp).addClass("text-dark mb-0");
                 var wind = $("<p>").text(todayWind).addClass("text-dark mb-0");
                 var humidity = $("<p>").text(todayHumidity).addClass("text-dark mb-0");
-                var uvIndex = $("<p>").text("UV Index: " + todayUVIndex).addClass("text-dark mb-0");
+                var uvIndex = $("<p>").text("UV Index: " + todayUVIndex).addClass("text-dark mb-0").addClass(setUVColor(todayUVIndex));
 
                 currentWeatherEl.append(cityHeading, iconPic, temp , wind , humidity, uvIndex); 
 
@@ -142,6 +143,17 @@ function getAPI(city){
 
             })
         });
+}
+
+// to add UV color class
+function setUVColor(uvIndex){
+    if (uvIndex <= 2){
+        return "favorable";
+    } else if (uvIndex <= 7){
+        return "moderate";
+    } else {
+        return "severe";
+    }
 }
 
 searchBtnEl.on("click", getCity);

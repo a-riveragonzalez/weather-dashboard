@@ -45,15 +45,15 @@ body {
 }
 
 /* UV levels  */
-.uvFavorable{
-    background-color: #00FFAB;
+.favorable{
+    background-color: rgb(44, 255, 44);
 }
 
-.uvModerate{
+.moderate{
     background-color: #FAF4B7;
 }
 
-.uvSevere{
+.severe{
     background-color: #E94560;
 }
 
