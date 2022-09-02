@@ -13,6 +13,7 @@ var citiesArray = [];
 // get city, add it to local storage array
 function getCity(event){
     var city = event.currentTarget.previousElementSibling.value;
+    searchCityEl.val("");
 
     // error control
     if (city === ""){
@@ -42,12 +43,13 @@ function getCity(event){
     // set to local storage (stringify it)
     localStorage.setItem("city", JSON.stringify(citiesArray));
 
-    // makeRecentCities();
+    makeRecentCities();
     getAPI(city);
 }
 
 // displays local storage 
 function makeRecentCities(){
+    recentCitiesList.empty();
     var savedCities = JSON.parse(localStorage.getItem("city"));
 
     // error control
