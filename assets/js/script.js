@@ -90,6 +90,9 @@ function getAPI(city){
                 }
             }).then(function(data2) {
                 console.log(data2);
+                // prevents doubles 
+                currentWeatherEl.empty();
+                fiveDayForcastEl.empty();
 
                 var cityName = city.toUpperCase();
                 var todayIcon = "http://openweathermap.org/img/wn/" + data2.current.weather[0].icon + "@2x.png";
@@ -120,7 +123,7 @@ function getAPI(city){
                     var forcastWind = "Wind: " + data2.daily[indexNumber].wind_speed + " MPH";
                     var forcastHumidity = "Humidity: " + data2.daily[indexNumber].humidity + "%";
 
-                    var cardBodyEl = $("<div>").addClass("card-body my-2");
+                    var cardBodyEl = $("<div>").addClass("card-body mt-3 mx-3 border border-dark bg-secondary w-20 h-100");
                     
                     var dateCard = $("<h5>").text(forcastDate).addClass("card-title");
                     var iconCard = $("<img>").attr("src", forcastIcon).addClass("card-text");
@@ -128,7 +131,7 @@ function getAPI(city){
                     var windCard = $("<p>").text(forcastWind).addClass("card-text");
                     var humidityCard = $("<p>").text(forcastHumidity).addClass("card-text");
 
-                    fiveDayForcastEl.addClass("card-deck text-white bg-secondary mb-3");
+                    fiveDayForcastEl.addClass("card-deck text-white mb-3 text-center");
                     fiveDayForcastEl.append(cardBodyEl);
                     cardBodyEl.append(dateCard , iconCard , tempCard , windCard , humidityCard);
 
