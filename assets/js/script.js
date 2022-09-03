@@ -128,7 +128,7 @@ function getAPI(city) {
             .addClass("text-dark mb-0");
           // var colorUVIndex = $("<span>").text(todayUVIndex).addClass("text-dark mb-0").addClass(setUVColor(todayUVIndex));
           var uvIndex = $("<p>").html(
-            `UV Index: <span class="text-dark mb-0 ${setUVColor(
+            `UV Index: <span class="text-dark px-2 mb-0 ${setUVColor(
               todayUVIndex
             )}"> ${todayUVIndex} </span>`
           ); //.html let's you manipulate inline. `` back tics let you still use "" inside without conflict. $() lets you break from the back tics to add some js script
