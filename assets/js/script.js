@@ -72,8 +72,8 @@ function getAPI(city) {
   var city = city;
   console.log(city);
   var requestURL =
-    "http://api.openweathermap.org/geo/1.0/direct?appid=f18de7fe10f46ccca13adc41b61d567d&q=" +
-    city;
+    "https://api.openweathermap.org/geo/1.0/direct?appid=f18de7fe10f46ccca13adc41b61d567d&q=" +
+    city; // ? added a "s" to the end of http
 
   fetch(requestURL)
     .then(function (response) {
@@ -126,7 +126,6 @@ function getAPI(city) {
           var humidity = $("<p>")
             .text(todayHumidity)
             .addClass("text-dark mb-0");
-          // var colorUVIndex = $("<span>").text(todayUVIndex).addClass("text-dark mb-0").addClass(setUVColor(todayUVIndex));
           var uvIndex = $("<p>").html(
             `UV Index: <span class="text-dark px-2 mb-0 ${setUVColor(
               todayUVIndex
