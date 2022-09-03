@@ -208,11 +208,10 @@ var recentCitiesItemsArray = $("li");
 
 recentCitiesItemsArray.each(function (i, city) {
   $(city).on("click", sendRecentCity);
+  console.log("it clicked!");
 });
 
 function sendRecentCity(city) {
   var city = city.target.textContent;
   getAPI(city);
 }
-
-// $(selector).html(htmlString);
