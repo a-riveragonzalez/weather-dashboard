@@ -5,8 +5,7 @@
 This is a weather dashboard that allows users to search for a city and get it's current weather and a five day forcast. The current weather holds the name of the city, date, temperature, humidity, wind speed, and the UV index. If the UV index is favorable, it will appear green; if it is moderate, it will appear yellow; if it is severe, then it will appear red. The user's recent citites will also be displayed and able to click on for the forcast.
 This project uses OpenWeather API, bootstrap, jquery, moment js, google fonts, javascript, css, and html.
 
-
-## Table of Contents 
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -42,16 +41,19 @@ THEN I am again presented with current and future conditions for that city
 ```
 
 ## Installation
-N/A
+
+This program can be run through a browser using the link to the the deployed application.
 
 ## Usage
-N/A
 
+Type name of city in the "Search for a City" input area to see the current and five day forcast of that city.
 ## Credits
-N/A
+
+[OpenWeather's Api](https://openweathermap.org/)
 
 ## License
-MIT License 
+
+MIT License
 https://opensource.org/licenses/MIT
 
 ## Deployed Link
@@ -67,8 +69,9 @@ https://github.com/a-riveragonzalez/weather-dashboard
 ![weather-dashboard-gif](weather-dashboard.gif)
 
 ## Questions
-If you have any questions, feel free to reach me at : 
+
+If you have any questions, feel free to reach me at :
 arelyrivera1996@gmail.com
 
-To check out more of my work: 
+To check out more of my work:
 https://github.com/a-riveragonzalez
